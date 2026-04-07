@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+  <rect width="1200" height="900" rx="48" fill="#3f3f46"/>
+  <path d="M340 290c62-78 162-120 260-120s198 42 260 120l86 150-88 74v206c0 24-20 44-44 44H386c-24 0-44-20-44-44V514l-88-74 86-150Z" fill="#52525b" stroke="#fafafa" stroke-opacity="0.14" stroke-width="8"/>
+  <path d="M452 336c20 66 74 104 148 104s128-38 148-104" stroke="#fafafa" stroke-opacity="0.22" stroke-width="16" stroke-linecap="round"/>
+  <path d="M430 578h340" stroke="#f59e0b" stroke-opacity="0.25" stroke-width="14" stroke-linecap="round"/>
+  <text x="90" y="810" fill="#fafafa" fill-opacity="0.92" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" letter-spacing="6">AFTERHOURS ZIP HOODIE</text>
+</svg>

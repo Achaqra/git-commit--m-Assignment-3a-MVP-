@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+  <rect width="1200" height="900" rx="48" fill="#0f172a"/>
+  <path d="M336 286c68-76 160-118 264-118s196 42 264 118l93 156-88 74v212c0 24-20 44-44 44H375c-24 0-44-20-44-44V516l-88-74 93-156Z" fill="#1d4ed8" fill-opacity="0.9" stroke="#f8fafc" stroke-opacity="0.14" stroke-width="8"/>
+  <path d="M600 168v396" stroke="#f8fafc" stroke-opacity="0.22" stroke-width="16" stroke-linecap="round"/>
+  <rect x="454" y="344" width="292" height="16" rx="8" fill="#f8fafc" fill-opacity="0.18"/>
+  <text x="90" y="810" fill="#f8fafc" fill-opacity="0.92" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" letter-spacing="6">RAIL COACH JACKET</text>
+</svg>

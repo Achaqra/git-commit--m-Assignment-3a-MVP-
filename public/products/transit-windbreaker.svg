@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+  <rect width="1200" height="900" rx="48" fill="#334155"/>
+  <path d="M360 280c36-70 105-112 240-112s204 42 240 112l84 170-92 74v172c0 26-21 48-48 48H416c-27 0-48-22-48-48V524l-92-74 84-170Z" fill="#64748b" stroke="#f8fafc" stroke-opacity="0.14" stroke-width="8"/>
+  <path d="M600 170v370" stroke="#f8fafc" stroke-opacity="0.22" stroke-width="16" stroke-linecap="round"/>
+  <rect x="448" y="332" width="304" height="18" rx="9" fill="#f8fafc" fill-opacity="0.16"/>
+  <text x="90" y="810" fill="#f8fafc" fill-opacity="0.92" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" letter-spacing="6">TRANSIT WINDBREAKER</text>
+</svg>

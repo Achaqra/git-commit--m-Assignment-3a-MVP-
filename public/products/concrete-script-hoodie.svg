@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+  <rect width="1200" height="900" rx="48" fill="#111111"/>
+  <circle cx="930" cy="210" r="180" fill="#f59e0b" fill-opacity="0.18"/>
+  <circle cx="290" cy="690" r="240" fill="#ffffff" fill-opacity="0.08"/>
+  <path d="M350 300c40-70 120-110 250-110s210 40 250 110l95 160c24 40 16 92-18 120l-80 66v210H353V646l-80-66c-34-28-42-80-18-120l95-160Z" fill="#1f1f1f" stroke="#f5f5f5" stroke-opacity="0.18" stroke-width="8"/>
+  <path d="M452 326c25 72 81 108 148 108s123-36 148-108" stroke="#f5f5f5" stroke-opacity="0.22" stroke-width="16" stroke-linecap="round"/>
+  <text x="90" y="810" fill="#f5f5f5" fill-opacity="0.9" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" letter-spacing="6">CONCRETE SCRIPT</text>
+</svg>

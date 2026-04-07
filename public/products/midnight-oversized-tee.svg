@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+  <rect width="1200" height="900" rx="48" fill="#27272a"/>
+  <path d="M332 290c65-78 162-120 268-120s203 42 268 120l89 90-96 96-70-64v394H409V412l-70 64-96-96 89-90Z" fill="#3f3f46" stroke="#fafafa" stroke-opacity="0.18" stroke-width="8"/>
+  <circle cx="600" cy="360" r="120" fill="#f5f5f5" fill-opacity="0.06"/>
+  <rect x="276" y="700" width="648" height="30" rx="15" fill="#fafafa" fill-opacity="0.16"/>
+  <text x="90" y="810" fill="#f5f5f5" fill-opacity="0.9" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" letter-spacing="6">MIDNIGHT OVERSIZED</text>
+</svg>
