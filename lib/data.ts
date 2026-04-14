@@ -28,31 +28,45 @@ function toOrderItems(value: unknown): OrderItem[] {
     return [];
   }
 
-  return value
-    .map((item) => {
-      if (!item || typeof item !== "object") {
-        return null;
-      }
+  const items: OrderItem[] = [];
 
-      const candidate = item as Partial<OrderItem>;
-      if (
-        typeof candidate.productId !== "string" ||
-        typeof candidate.size !== "string" ||
-        typeof candidate.quantity !== "number"
-      ) {
-        return null;
-      }
+  for (const item of value) {
+    if (!item || typeof item !== "object") {
+      continue;
+    }
 
-      return {
-        productId: candidate.productId,
-        productName: typeof candidate.productName === "string" ? candidate.productName : undefined,
-        color: typeof candidate.color === "string" ? candidate.color : undefined,
-        size: candidate.size,
-        quantity: candidate.quantity,
-        unitPrice: toNumber(candidate.unitPrice) ?? undefined,
-      };
-    })
-    .filter((item): item is OrderItem => Boolean(item));
+    const candidate = item as Partial<OrderItem>;
+    if (
+      typeof candidate.productId !== "string" ||
+      typeof candidate.size !== "string" ||
+      typeof candidate.quantity !== "number"
+    ) {
+      continue;
+    }
+
+    const normalizedItem: OrderItem = {
+      productId: candidate.productId,
+      size: candidate.size,
+      quantity: candidate.quantity,
+    };
+
+    if (typeof candidate.productName === "string") {
+      normalizedItem.productName = candidate.productName;
+    }
+
+    if (typeof candidate.color === "string") {
+      normalizedItem.color = candidate.color;
+    }
+
+    const unitPrice = toNumber(candidate.unitPrice);
+    if (unitPrice !== null) {
+      normalizedItem.unitPrice = unitPrice;
+    }
+
+    items.push(normalizedItem);
+  }
+
+  return items;
 }
 
 function normalizeProduct(row: Record<string, unknown>): Product | null {
