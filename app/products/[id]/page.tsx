@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { ProductCard } from "@/components/product-card";
+import { SizeSelector } from "@/components/size-selector";
 import { SizeGuide } from "@/components/size-guide";
 import { getProducts, getSavedSizePreferences } from "@/lib/data";
 
@@ -49,6 +50,7 @@ export default async function ProductDetailPage({
           <SizeGuide
             savedTopSize={savedSizePreferences.top}
             sizeGuidance={product.sizeGuidance}
+            highlightedSize={savedSizePreferences.top}
             sizes={product.sizes}
           />
 
@@ -56,21 +58,16 @@ export default async function ProductDetailPage({
             <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-700">Add to cart</h2>
             <form action="/checkout" className="mt-4 grid gap-3" method="get">
               <input name="product" type="hidden" value={product.id} />
-              <label className="grid gap-1 text-sm text-zinc-700">
-                <span>Choose size</span>
-                <select
-                  className="rounded-lg border border-zinc-300 px-3 py-2"
-                  defaultValue={savedSizePreferences.top}
-                  name="size"
-                >
-                  {product.sizes.map((size) => (
-                    <option key={size} value={size}>
-                      {size}
-                    </option>
-                  ))}
-                </select>
-              </label>
+              <SizeSelector
+                defaultValue={savedSizePreferences.top}
+                description="US equivalents are shown to make EU sizing easier to compare."
+                id="product-size"
+                label="Choose size"
+                name="size"
+                sizes={product.sizes}
+              />
               <button
+                aria-label={`Add ${product.name} to cart and proceed to checkout`}
                 className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-[#bb3e03]"
                 type="submit"
               >

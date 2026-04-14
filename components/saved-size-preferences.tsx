@@ -1,4 +1,5 @@
 import type { SizePreferences } from "@/lib/types";
+import { formatSizeLabel } from "@/lib/size-labels";
 
 type SavedSizePreferencesProps = {
   preferences: SizePreferences;
@@ -11,15 +12,15 @@ export function SavedSizePreferences({ preferences }: SavedSizePreferencesProps)
       <dl className="mt-4 grid gap-3 sm:grid-cols-3">
         <div className="rounded-xl bg-zinc-100 p-3">
           <dt className="text-xs uppercase tracking-[0.16em] text-zinc-500">Top</dt>
-          <dd className="mt-1 text-lg font-semibold text-zinc-900">{preferences.top}</dd>
+          <dd className="mt-1 text-lg font-semibold text-zinc-900">{formatSizeLabel(preferences.top)}</dd>
         </div>
         <div className="rounded-xl bg-zinc-100 p-3">
           <dt className="text-xs uppercase tracking-[0.16em] text-zinc-500">Bottom</dt>
-          <dd className="mt-1 text-lg font-semibold text-zinc-900">{preferences.bottom}</dd>
+          <dd className="mt-1 text-lg font-semibold text-zinc-900">{formatSizeLabel(preferences.bottom)}</dd>
         </div>
         <div className="rounded-xl bg-zinc-100 p-3">
           <dt className="text-xs uppercase tracking-[0.16em] text-zinc-500">Footwear</dt>
-          <dd className="mt-1 text-lg font-semibold text-zinc-900">{preferences.footwear}</dd>
+          <dd className="mt-1 text-lg font-semibold text-zinc-900">{formatSizeLabel(preferences.footwear)}</dd>
         </div>
       </dl>
     </section>

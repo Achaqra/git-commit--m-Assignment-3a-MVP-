@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import type { Product } from "@/lib/types";
+import { formatSizeLabel } from "@/lib/size-labels";
 
 type ProductCardProps = {
   product: Product;
@@ -30,7 +31,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">{product.type}</p>
         <h3 className="text-lg font-semibold text-zinc-900">{product.name}</h3>
         <p className="text-sm text-zinc-600">{product.color}</p>
-        <p className="text-xs text-zinc-500">Sizes: {product.sizes.join(", ")}</p>
+        <p className="text-xs text-zinc-500">Sizes: {product.sizes.map(formatSizeLabel).join(", ")}</p>
       </div>
 
       <div className="mt-4 flex items-center justify-between">

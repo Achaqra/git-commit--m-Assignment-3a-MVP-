@@ -1,5 +1,5 @@
 import { orders as mockOrders, products as mockProducts, savedSizePreferences as mockSavedSizePreferences } from "@/lib/seed-data";
-import { getSupabaseClient } from "@/lib/supabase";
+import { getSupabaseAdminClient, getSupabaseClient } from "@/lib/supabase";
 import type { Order, OrderItem, Product, SizePreferences } from "@/lib/types";
 
 function toStringArray(value: unknown): string[] {
@@ -8,6 +8,19 @@ function toStringArray(value: unknown): string[] {
   }
 
   return value.filter((item): item is string => typeof item === "string");
+}
+
+function toNumber(value: unknown): number | null {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return value;
+  }
+
+  if (typeof value === "string" && value.trim()) {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+
+  return null;
 }
 
 function toOrderItems(value: unknown): OrderItem[] {
@@ -30,7 +43,14 @@ function toOrderItems(value: unknown): OrderItem[] {
         return null;
       }
 
-      return candidate as OrderItem;
+      return {
+        productId: candidate.productId,
+        productName: typeof candidate.productName === "string" ? candidate.productName : undefined,
+        color: typeof candidate.color === "string" ? candidate.color : undefined,
+        size: candidate.size,
+        quantity: candidate.quantity,
+        unitPrice: toNumber(candidate.unitPrice) ?? undefined,
+      };
     })
     .filter((item): item is OrderItem => Boolean(item));
 }
@@ -40,7 +60,7 @@ function normalizeProduct(row: Record<string, unknown>): Product | null {
   const name = typeof row.name === "string" ? row.name : null;
   const type = typeof row.type === "string" ? row.type : null;
   const color = typeof row.color === "string" ? row.color : null;
-  const price = typeof row.price === "number" ? row.price : null;
+  const price = toNumber(row.price);
 
   if (!id || !name || !type || !color || price === null) {
     return null;
@@ -92,6 +112,7 @@ function normalizeOrder(row: Record<string, unknown>): Order | null {
 
   return {
     id,
+    orderNumber: typeof row.orderNumber === "string" ? row.orderNumber : typeof row.order_number === "string" ? row.order_number : undefined,
     status: parsedStatus,
     trackingNumber:
       typeof row.trackingNumber === "string"
@@ -106,12 +127,15 @@ function normalizeOrder(row: Record<string, unknown>): Order | null {
         : typeof row.placed_at === "string"
           ? row.placed_at
           : "Recently",
-    items: toOrderItems(row.items),
+    subtotal: toNumber(row.subtotal) ?? undefined,
+    shippingAmount: toNumber(row.shippingAmount) ?? toNumber(row.shipping_amount) ?? undefined,
+    totalAmount: toNumber(row.totalAmount) ?? toNumber(row.total_amount) ?? undefined,
+    items: toOrderItems(row.items ?? row.order_items),
   };
 }
 
 export async function getProducts(): Promise<Product[]> {
-  const client = getSupabaseClient();
+  const client = getSupabaseAdminClient() ?? getSupabaseClient();
   if (!client) {
     return mockProducts;
   }
@@ -129,7 +153,7 @@ export async function getProducts(): Promise<Product[]> {
 }
 
 export async function getSavedSizePreferences(): Promise<SizePreferences> {
-  const client = getSupabaseClient();
+  const client = getSupabaseAdminClient() ?? getSupabaseClient();
   if (!client) {
     return mockSavedSizePreferences;
   }
@@ -160,12 +184,15 @@ export async function getSavedSizePreferences(): Promise<SizePreferences> {
 }
 
 export async function getOrders(): Promise<Order[]> {
-  const client = getSupabaseClient();
+  const client = getSupabaseAdminClient() ?? getSupabaseClient();
   if (!client) {
     return mockOrders;
   }
 
-  const { data, error } = await client.from("orders").select("*");
+  const { data, error } = await client
+    .from("orders")
+    .select("*, order_items(id, product_id, product_name, color, size, quantity, unit_price)")
+    .order("created_at", { ascending: false });
   if (error || !data || !data.length) {
     return mockOrders;
   }

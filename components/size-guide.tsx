@@ -1,24 +1,41 @@
+import { formatSizeLabel, getSizeGuideNote } from "@/lib/size-labels";
+
 type SizeGuideProps = {
   sizeGuidance: string;
   savedTopSize: string;
   sizes: string[];
+  highlightedSize?: string;
 };
 
-export function SizeGuide({ sizeGuidance, savedTopSize, sizes }: SizeGuideProps) {
+export function SizeGuide({ sizeGuidance, savedTopSize, sizes, highlightedSize }: SizeGuideProps) {
   return (
-    <section className="rounded-2xl border border-zinc-800/10 bg-white/85 p-5">
-      <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-700">Size Recommendation</h2>
+    <section className="rounded-2xl border border-zinc-900/10 bg-white/90 p-5 shadow-sm">
+      <div className="flex items-start justify-between gap-3">
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-700">Size Recommendation</h2>
+        <details className="group relative text-xs text-zinc-500">
+          <summary className="cursor-pointer list-none rounded-full border border-zinc-300 px-3 py-1 transition hover:border-zinc-500 hover:text-zinc-800">
+            Size guide
+          </summary>
+          <div className="absolute right-0 top-9 z-10 w-64 rounded-xl border border-zinc-200 bg-white p-3 text-xs leading-5 text-zinc-600 shadow-lg">
+            {getSizeGuideNote()}
+          </div>
+        </details>
+      </div>
       <p className="mt-2 text-sm leading-6 text-zinc-600">{sizeGuidance}</p>
       <p className="mt-3 text-sm text-zinc-700">
-        Saved top size: <span className="font-semibold text-zinc-900">{savedTopSize}</span>
+        Saved top size: <span className="font-semibold text-zinc-900">{formatSizeLabel(savedTopSize)}</span>
       </p>
-      <div className="mt-3 flex flex-wrap gap-2">
+      <div className="mt-4 flex flex-wrap gap-2">
         {sizes.map((size) => (
           <span
             key={size}
-            className="rounded-md border border-zinc-300 bg-zinc-50 px-2 py-1 text-xs font-medium text-zinc-700"
+            className={`rounded-md border px-2 py-1 text-xs font-medium ${
+              highlightedSize === size
+                ? "border-zinc-900 bg-zinc-900 text-white"
+                : "border-zinc-300 bg-zinc-50 text-zinc-700"
+            }`}
           >
-            {size}
+            {formatSizeLabel(size)}
           </span>
         ))}
       </div>

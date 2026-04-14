@@ -22,15 +22,22 @@ export type SizePreferences = {
 
 export type OrderItem = {
   productId: string;
+  productName?: string;
+  color?: string;
   size: string;
   quantity: number;
+  unitPrice?: number;
 };
 
 export type Order = {
   id: string;
+  orderNumber?: string;
   status: "Processing" | "Shipped" | "Delivered";
-  trackingNumber: string;
-  eta: string;
+  trackingNumber?: string;
+  eta?: string;
   placedAt: string;
+  subtotal?: number;
+  shippingAmount?: number;
+  totalAmount?: number;
   items: OrderItem[];
 };

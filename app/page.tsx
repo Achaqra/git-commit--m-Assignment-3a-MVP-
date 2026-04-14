@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { FilterSidebar } from "@/components/filter-sidebar";
+import { MobileFilterToggle } from "@/components/mobile-filter-toggle";
 import { ProductGrid } from "@/components/product-grid";
 import { SavedSizePreferences } from "@/components/saved-size-preferences";
 import { getProducts, getSavedSizePreferences } from "@/lib/data";
@@ -76,11 +77,20 @@ export default async function Home({
       ) : null}
 
       <section className="mt-6 grid gap-6 lg:grid-cols-[280px_1fr]">
-        <FilterSidebar
-          selectedTypes={selectedTypes}
-          selectedColors={selectedColors}
-          selectedSizes={selectedSizes}
-        />
+        <div className="space-y-3 lg:hidden">
+          <MobileFilterToggle
+            selectedColors={selectedColors}
+            selectedSizes={selectedSizes}
+            selectedTypes={selectedTypes}
+          />
+        </div>
+        <div className="hidden lg:block">
+          <FilterSidebar
+            selectedTypes={selectedTypes}
+            selectedColors={selectedColors}
+            selectedSizes={selectedSizes}
+          />
+        </div>
         <div className="space-y-5">
           <SavedSizePreferences preferences={savedSizePreferences} />
           <ProductGrid products={filteredProducts} />

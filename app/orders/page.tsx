@@ -4,12 +4,24 @@ import { OrderCard } from "@/components/order-card";
 import { SavedSizePreferences } from "@/components/saved-size-preferences";
 import { getOrders, getProducts, getSavedSizePreferences } from "@/lib/data";
 
-export default async function OrdersPage() {
+type SearchParams = Promise<{
+  success?: string;
+  order?: string;
+}>;
+
+export default async function OrdersPage({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
   const [orders, products, savedSizePreferences] = await Promise.all([
     getOrders(),
     getProducts(),
     getSavedSizePreferences(),
   ]);
+  const params = await searchParams;
+  const placedOrderNumber = params.order;
+  const showSuccess = params.success === "1";
 
   return (
     <div className="mx-auto w-full max-w-[1100px] px-4 py-6 sm:px-6 lg:px-8">
@@ -31,6 +43,12 @@ export default async function OrdersPage() {
         </div>
       </header>
 
+      {showSuccess ? (
+        <div className="mt-4 rounded-2xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-900">
+          Order placed successfully{placedOrderNumber ? `: ${placedOrderNumber}` : ""}. It now appears in your orders list.
+        </div>
+      ) : null}
+
       <section className="mt-6 grid gap-4 lg:grid-cols-[1fr_320px]">
         <div className="space-y-4">
           {orders.map((order) => {
@@ -41,7 +59,7 @@ export default async function OrdersPage() {
               return null;
             }
 
-            return <OrderCard key={order.id} order={order} product={product} />;
+            return <OrderCard key={order.id} highlighted={order.orderNumber === placedOrderNumber} order={order} product={product} />;
           })}
         </div>
         <SavedSizePreferences preferences={savedSizePreferences} />

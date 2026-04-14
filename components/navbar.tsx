@@ -34,6 +34,7 @@ export function Navbar() {
 
             return (
               <Link
+                aria-current={active ? "page" : undefined}
                 key={link.href}
                 className={`rounded-lg px-3 py-2 text-sm font-medium transition ${
                   active ? "bg-zinc-900 text-white" : "text-zinc-700 hover:bg-zinc-100"
