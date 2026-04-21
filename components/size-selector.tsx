@@ -23,7 +23,7 @@ export function SizeSelector({ id, name, label, sizes, defaultValue, description
           return (
             <label
               key={size}
-              className="group flex cursor-pointer items-center justify-center rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm font-medium text-zinc-700 transition hover:border-zinc-500 hover:bg-zinc-50"
+              className="group flex min-h-11 cursor-pointer items-center justify-center rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm font-medium text-zinc-700 transition hover:border-zinc-500 hover:bg-zinc-50"
               htmlFor={inputId}
             >
               <input
@@ -34,7 +34,7 @@ export function SizeSelector({ id, name, label, sizes, defaultValue, description
                 type="radio"
                 value={size}
               />
-              <span className="rounded-lg px-1 py-0.5 transition peer-checked:bg-zinc-900 peer-checked:text-white peer-checked:shadow-sm">
+              <span className="rounded-lg px-1 py-0.5 transition peer-checked:bg-zinc-900 peer-checked:text-white peer-checked:shadow-sm peer-focus-visible:outline-3 peer-focus-visible:outline-[#bb3e0347] peer-focus-visible:outline-offset-2">
                 {formatSizeLabel(size)}
               </span>
             </label>

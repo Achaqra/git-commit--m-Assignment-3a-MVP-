@@ -10,7 +10,7 @@ type ProductCardProps = {
 
 export function ProductCard({ product }: ProductCardProps) {
   return (
-    <article className="group rounded-2xl border border-zinc-800/10 bg-white/85 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+    <article className="group rounded-2xl border border-zinc-800/10 bg-white/90 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       <div className="relative flex aspect-[4/3] items-end overflow-hidden rounded-xl bg-linear-to-br from-zinc-900 via-zinc-700 to-zinc-500 p-4">
         {product.imageUrl ? (
           <Image
@@ -37,7 +37,7 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className="mt-4 flex items-center justify-between">
         <p className="text-lg font-semibold text-zinc-900">${product.price}</p>
         <Link
-          className="rounded-lg bg-zinc-900 px-3 py-2 text-sm font-medium text-white transition group-hover:bg-[#bb3e03]"
+          className="inline-flex items-center rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-[#bb3e03] group-hover:bg-[#bb3e03]"
           href={`/products/${product.id}`}
         >
           View item

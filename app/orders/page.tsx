@@ -25,7 +25,7 @@ export default async function OrdersPage({
 
   return (
     <div className="mx-auto w-full max-w-[1100px] px-4 py-6 sm:px-6 lg:px-8">
-      <header className="rounded-2xl border border-zinc-900/10 bg-white/80 p-5">
+      <header className="rounded-2xl border border-zinc-900/10 bg-white/88 p-5 shadow-sm">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">Superior Fits</p>
@@ -35,7 +35,7 @@ export default async function OrdersPage({
             </p>
           </div>
           <Link
-            className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-[#bb3e03]"
+            className="inline-flex items-center rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-[#bb3e03]"
             href="/"
           >
             Continue shopping

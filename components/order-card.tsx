@@ -33,7 +33,7 @@ export function OrderCard({ order, product, highlighted }: OrderCardProps) {
   }
 
   return (
-    <article className={`rounded-2xl border bg-white/85 p-5 ${highlighted ? "border-emerald-400 ring-1 ring-emerald-200" : "border-zinc-800/10"}`}>
+    <article className={`rounded-2xl border bg-white/90 p-5 ${highlighted ? "border-emerald-400 ring-1 ring-emerald-200" : "border-zinc-800/10"}`}>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <p className="text-xs uppercase tracking-[0.17em] text-zinc-500">Order {order.orderNumber ?? order.id}</p>
@@ -86,13 +86,13 @@ export function OrderCard({ order, product, highlighted }: OrderCardProps) {
 
       <div className="mt-5 flex gap-2">
         <Link
-          className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-[#bb3e03]"
+          className="inline-flex items-center rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-[#bb3e03]"
           href={`/checkout?product=${product.id}&size=${firstItem.size}`}
         >
           Reorder this fit
         </Link>
         <Link
-          className="rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100"
+          className="inline-flex items-center rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100"
           href={`/products/${product.id}`}
         >
           View item

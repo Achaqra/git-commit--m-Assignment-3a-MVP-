@@ -10,13 +10,13 @@ type SizeGuideProps = {
 export function SizeGuide({ sizeGuidance, savedTopSize, sizes, highlightedSize }: SizeGuideProps) {
   return (
     <section className="rounded-2xl border border-zinc-900/10 bg-white/90 p-5 shadow-sm">
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex flex-wrap items-start justify-between gap-3">
         <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-700">Size Recommendation</h2>
-        <details className="group relative text-xs text-zinc-500">
-          <summary className="cursor-pointer list-none rounded-full border border-zinc-300 px-3 py-1 transition hover:border-zinc-500 hover:text-zinc-800">
+        <details className="group w-full max-w-xs text-xs text-zinc-600 sm:w-auto">
+          <summary className="inline-flex cursor-pointer list-none items-center rounded-full border border-zinc-300 px-3 py-1 transition hover:border-zinc-500 hover:text-zinc-900">
             Size guide
           </summary>
-          <div className="absolute right-0 top-9 z-10 w-64 rounded-xl border border-zinc-200 bg-white p-3 text-xs leading-5 text-zinc-600 shadow-lg">
+          <div className="mt-2 rounded-xl border border-zinc-200 bg-zinc-50 p-3 leading-5">
             {getSizeGuideNote()}
           </div>
         </details>

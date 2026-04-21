@@ -5,6 +5,8 @@
   --foreground: #111111;
   --surface: rgba(255, 255, 255, 0.72);
   --surface-strong: rgba(255, 255, 255, 0.9);
+  --accent: #bb3e03;
+  --focus-ring: rgba(187, 62, 3, 0.28);
 }
 
 @theme inline {
@@ -16,10 +18,62 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--background);
+  background:
+    radial-gradient(circle at 12% 16%, rgba(251, 191, 36, 0.26), transparent 38%),
+    radial-gradient(circle at 88% 2%, rgba(234, 88, 12, 0.22), transparent 42%),
+    var(--background);
   color: var(--foreground);
   font-family: var(--font-body), sans-serif;
-  line-height: 1.4;
+  line-height: 1.5;
+}
+
+::selection {
+  background: rgba(187, 62, 3, 0.2);
+}
+
+a,
+button,
+input,
+select,
+textarea,
+summary {
+  font: inherit;
+}
+
+a,
+button,
+summary {
+  min-height: 44px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  z-index: 60;
+  transform: translateY(-140%);
+  border-radius: 0.75rem;
+  background: #111111;
+  color: #ffffff;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
 }
 
 h1,

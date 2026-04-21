@@ -44,7 +44,7 @@ export default async function Home({
 
   return (
     <div className="mx-auto w-full max-w-[1320px] px-4 py-6 sm:px-6 lg:px-8">
-      <header className="rounded-2xl border border-zinc-900/10 bg-white/80 p-5 backdrop-blur-sm">
+      <header className="rounded-2xl border border-zinc-900/10 bg-white/88 p-5 shadow-sm backdrop-blur-sm">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">Superior Fits</p>
@@ -55,13 +55,13 @@ export default async function Home({
           </div>
           <nav className="flex gap-2">
             <Link
-              className="rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100"
+              className="inline-flex items-center rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100"
               href="/orders"
             >
               Orders
             </Link>
             <Link
-              className="rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-[#bb3e03]"
+              className="inline-flex items-center rounded-lg bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-[#bb3e03]"
               href="/checkout"
             >
               Checkout
@@ -93,6 +93,9 @@ export default async function Home({
         </div>
         <div className="space-y-5">
           <SavedSizePreferences preferences={savedSizePreferences} />
+          <p aria-live="polite" className="text-sm text-zinc-600">
+            Showing {filteredProducts.length} {filteredProducts.length === 1 ? "product" : "products"}
+          </p>
           <ProductGrid products={filteredProducts} />
         </div>
       </section>

@@ -28,7 +28,7 @@ export default async function ProductDetailPage({
   return (
     <div className="mx-auto w-full max-w-[1180px] px-4 py-6 sm:px-6 lg:px-8">
       <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
-        <section className="rounded-2xl border border-zinc-800/10 bg-white/85 p-6">
+        <section className="rounded-2xl border border-zinc-800/10 bg-white/90 p-6 shadow-sm">
           <div className="flex aspect-[16/10] items-end rounded-2xl bg-linear-to-br from-zinc-900 via-zinc-700 to-zinc-500 p-5">
             <span className="rounded-md bg-white/85 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-900">
               {product.imageLabel}
@@ -40,7 +40,7 @@ export default async function ProductDetailPage({
         </section>
 
         <section className="space-y-4">
-          <div className="rounded-2xl border border-zinc-800/10 bg-white/85 p-5">
+          <div className="rounded-2xl border border-zinc-800/10 bg-white/90 p-5 shadow-sm">
             <p className="text-xs uppercase tracking-[0.16em] text-zinc-500">Price</p>
             <p className="mt-1 text-3xl font-semibold text-zinc-900">${product.price}</p>
             <p className="mt-3 text-sm text-zinc-600">Color: {product.color}</p>
@@ -54,7 +54,7 @@ export default async function ProductDetailPage({
             sizes={product.sizes}
           />
 
-          <div className="rounded-2xl border border-zinc-800/10 bg-white/85 p-5">
+          <div className="rounded-2xl border border-zinc-800/10 bg-white/90 p-5 shadow-sm">
             <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-700">Add to cart</h2>
             <form action="/checkout" className="mt-4 grid gap-3" method="get">
               <input name="product" type="hidden" value={product.id} />
@@ -76,7 +76,7 @@ export default async function ProductDetailPage({
             </form>
             <div className="mt-3 flex flex-wrap gap-2">
               <Link
-                className="rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100"
+                className="inline-flex items-center rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100"
                 href="/"
               >
                 Back to browse

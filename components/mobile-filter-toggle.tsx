@@ -18,7 +18,7 @@ export function MobileFilterToggle({ selectedTypes, selectedColors, selectedSize
       <button
         aria-expanded={open}
         aria-controls="mobile-filter-panel"
-        className="flex w-full items-center justify-between rounded-2xl border border-zinc-900/10 bg-white/90 px-4 py-3 text-sm font-semibold text-zinc-900 shadow-sm transition hover:border-zinc-500"
+        className="flex w-full items-center justify-between rounded-2xl border border-zinc-900/10 bg-white/95 px-4 py-3 text-sm font-semibold text-zinc-900 shadow-sm transition hover:border-zinc-500 hover:bg-white"
         type="button"
         onClick={() => setOpen((value) => !value)}
       >

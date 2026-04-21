@@ -28,10 +28,13 @@ export default function RootLayout({
     <html lang="en" className={`${displayFont.variable} ${bodyFont.variable} h-full antialiased`}>
       <body className="min-h-full">
         <div className="relative min-h-full">
+          <a className="skip-link" href="#main-content">
+            Skip to main content
+          </a>
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(251,191,36,0.28),transparent_40%),radial-gradient(circle_at_85%_0%,rgba(234,88,12,0.28),transparent_45%)]" />
           <div className="relative z-10">
             <Navbar />
-            <main>{children}</main>
+            <main id="main-content">{children}</main>
           </div>
         </div>
       </body>
